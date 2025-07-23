@@ -9,6 +9,7 @@
     "typecheck": "turbo run typecheck",
     "db:push": "turbo -F @repo/db push",
     "db:studio": "turbo -F @repo/db studio",
+    "auth:generate": "bun -F @repo/auth generate",
     "build:ci": "bun db:push && bun run build"
   },
   "devDependencies": {

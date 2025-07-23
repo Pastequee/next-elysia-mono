@@ -1,0 +1,21 @@
+{
+  "typescript.tsdk": "./node_modules/typescript/lib",
+
+  "editor.defaultFormatter": "biomejs.biome",
+
+  "[javascript][typescript][javascriptreact][typescriptreact][json][jsonc][css][graphql]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+
+  "editor.codeActionsOnSave": {
+    "source.fixAll.biome": "explicit",
+    "source.action.useSortedKeys.biome": "explicit",
+    "source.organizeImports.biome": "explicit"
+  },
+
+  "emmet.showExpandedAbbreviation": "never",
+  "json.schemaDownload.enable": true
+}

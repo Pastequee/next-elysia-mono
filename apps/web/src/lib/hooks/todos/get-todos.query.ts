@@ -1,4 +1,4 @@
-import { type QueryClient, queryOptions, useQuery } from '@tanstack/react-query'
+import { queryOptions, useQuery } from '@tanstack/react-query'
 
 import { FIVE_MINUTES } from '~/lib/constants/time'
 import { api } from '~/lib/treaty'

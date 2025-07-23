@@ -9,13 +9,16 @@
   },
   "scripts": {
     "build": "tsc",
-    "dev": "tsc --watch"
+    "dev": "tsc --watch",
+    "generate": "bun dotenv bunx @better-auth/cli generate --config ./index.ts --output ../db/schemas/auth.schema.ts",
+    "dotenv": "dotenv -e ../../.env --"
   },
   "dependencies": {
     "@repo/db": "workspace:*",
     "@repo/tsconfig": "workspace:*",
     "@t3-oss/env-core": "catalog:",
     "better-auth": "^1.3.2",
+    "dotenv-cli": "^9.0.0",
     "zod": "catalog:"
   },
   "devDependencies": {
