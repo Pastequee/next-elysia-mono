@@ -1,0 +1,25 @@
+{
+  "name": "@repo/auth",
+  "private": true,
+  "exports": {
+    ".": {
+      "default": "./index.ts",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  },
+  "dependencies": {
+    "@repo/db": "workspace:*",
+    "@repo/tsconfig": "workspace:*",
+    "@t3-oss/env-core": "catalog:",
+    "better-auth": "^1.3.2",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@repo/tsconfig": "workspace:*",
+    "typescript": "catalog:"
+  }
+}

@@ -1,24 +1,37 @@
 {
-  "name": "next-fullstack",
+  "name": "@repo/root",
   "private": true,
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
-    "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "check-types": "turbo run check-types"
+    "lint": "ultracite lint",
+    "format": "ultracite format",
+    "typecheck": "turbo run typecheck",
+    "db:push": "turbo -F @repo/db push",
+    "db:studio": "turbo -F @repo/db studio",
+    "build:ci": "bun db:push && bun run build"
   },
   "devDependencies": {
-    "prettier": "^3.6.2",
+    "@biomejs/biome": "^2.1.2",
+    "lefthook": "^1.12.2",
     "turbo": "^2.5.5",
-    "typescript": "5.8.3"
+    "ultracite": "^5.0.47"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=22"
   },
-  "packageManager": "bun@1.2.9",
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ]
+  "packageManager": "bun@1.2.19",
+  "workspaces": {
+    "packages": [
+      "apps/*",
+      "packages/*",
+      "tooling/*"
+    ],
+    "catalog": {
+      "typescript": "^5.8.3",
+      "zod": "^4.0.5",
+      "drizzle-orm": "^0.44.3",
+      "@t3-oss/env-core": "^0.13.8"
+    }
+  }
 }

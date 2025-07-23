@@ -16,10 +16,14 @@ node_modules
 coverage
 
 # Turbo
+.cache
 .turbo
 
 # Vercel
 .vercel
+
+# Next
+next-env.d.ts
 
 # Build Outputs
 .next/
