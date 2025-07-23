@@ -5,6 +5,7 @@
     "build": {
       "dependsOn": ["^build", "push"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
+      "env": ["DATABASE_URL", "BETTER_AUTH_SECRET"],
       "outputs": [".next/**", "!.next/cache/**", "dist/**"]
     },
     "lint": {
@@ -18,6 +19,7 @@
       "persistent": true
     },
     "push": {
+      "env": ["DATABASE_URL"],
       "inputs": ["schemas/*"]
     },
     "studio": {
