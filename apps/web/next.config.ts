@@ -3,7 +3,7 @@ import type { NextConfig } from 'next'
 import '~/lib/env'
 
 const nextConfig: NextConfig = {
-  transpilePackages: ['@repo/api'],
+  transpilePackages: ['@repo/api', '@repo/auth'],
 
   eslint: { ignoreDuringBuilds: true },
   typescript: { ignoreBuildErrors: true },

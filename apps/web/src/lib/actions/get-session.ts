@@ -1,27 +1,23 @@
 'use server'
 
-import type { Session, User } from 'better-auth'
+import { auth } from '@repo/auth'
+import { headers } from 'next/headers'
 import { redirect } from 'next/navigation'
 import { cache } from 'react'
 
-import { api } from '~/lib/treaty'
+export const getSession = cache(async () => {
+  const session = await auth.api.getSession({
+    headers: await headers(),
+  })
 
-export interface UserSession {
-  session: Session
-  user: User
-}
-
-export const getSession = cache(async (): Promise<null | UserSession> => {
-  const { data } = await api.auth.session.get()
-
-  return data
+  return session
 })
 
 export const getSessionOrRedirect = async () => {
   const data = await getSession()
 
   if (!data) {
-    redirect('/auth/sign-in')
+    redirect('/auth/login')
   }
 
   return data

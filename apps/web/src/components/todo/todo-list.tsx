@@ -1,7 +1,7 @@
 'use client'
 
+import { Loader2 } from 'lucide-react'
 import { useGetTodosQuery } from '~/lib/hooks/todos'
-
 import { TodoItem } from './todo-item'
 
 interface TodoListProps {
@@ -9,7 +9,17 @@ interface TodoListProps {
 }
 
 export const TodoList = ({ hasSession }: TodoListProps) => {
-  const { data: todos = [] } = useGetTodosQuery({ enabled: hasSession })
+  const { data: todos = [], isLoading } = useGetTodosQuery({
+    enabled: hasSession,
+  })
+
+  if (isLoading) {
+    return (
+      <div className="mx-auto">
+        <Loader2 className="animate-spin" />
+      </div>
+    )
+  }
 
   if (todos.length === 0) {
     return

@@ -5,7 +5,6 @@ import { drizzleAdapter } from 'better-auth/adapters/drizzle'
 import { env } from './env'
 
 export const auth = betterAuth({
-  basePath: '/auth',
   database: drizzleAdapter(db, { provider: 'pg' }),
   emailAndPassword: { enabled: true },
   secret: env.BETTER_AUTH_SECRET,

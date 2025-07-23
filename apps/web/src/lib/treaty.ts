@@ -1,7 +1,5 @@
 import { treaty } from '@elysiajs/eden'
-
 import type { App } from '@repo/api'
-
 import { isServer } from '@tanstack/react-query'
 
 import { getBaseApiUrl } from './utils/get-base-api-url'

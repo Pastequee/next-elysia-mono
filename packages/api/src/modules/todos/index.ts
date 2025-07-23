@@ -1,6 +1,5 @@
 import { Elysia, t } from 'elysia'
-
-import { authMacro } from '../auth'
+import { authMacro } from '../../auth'
 import { createTodo, updateTodo } from './models'
 import { Todos } from './service'
 
