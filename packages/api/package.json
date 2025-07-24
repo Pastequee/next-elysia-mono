@@ -4,7 +4,7 @@
   "main": "./index.ts",
   "exports": {
     ".": {
-      "default": "./src/index.ts",
+      "default": "./index.ts",
       "types": "./dist/index.d.ts"
     }
   },
