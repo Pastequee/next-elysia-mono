@@ -13,7 +13,7 @@ export const getSession = cache(async () => {
   return session
 })
 
-export const getSessionOrRedirect = async () => {
+export const getSessionOrRedirect = cache(async () => {
   const data = await getSession()
 
   if (!data) {
@@ -21,4 +21,4 @@ export const getSessionOrRedirect = async () => {
   }
 
   return data
-}
+})

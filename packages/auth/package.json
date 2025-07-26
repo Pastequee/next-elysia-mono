@@ -3,7 +3,7 @@
   "private": true,
   "exports": {
     ".": {
-      "default": "./index.ts",
+      "default": "./src/index.ts",
       "types": "./dist/index.d.ts"
     }
   },

@@ -3,11 +3,11 @@
   "private": true,
   "exports": {
     ".": {
-      "default": "./index.ts",
+      "default": "./src/index.ts",
       "types": "./dist/index.d.ts"
     },
     "./schemas": {
-      "default": "./schemas/index.ts",
+      "default": "./src/schemas/index.ts",
       "types": "./dist/schemas/index.d.ts"
     }
   },

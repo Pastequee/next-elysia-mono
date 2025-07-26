@@ -1,10 +1,9 @@
 {
   "name": "@repo/api",
   "private": true,
-  "main": "./index.ts",
   "exports": {
     ".": {
-      "default": "./index.ts",
+      "default": "./src/index.ts",
       "types": "./dist/index.d.ts"
     }
   },
