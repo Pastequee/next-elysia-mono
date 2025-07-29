@@ -9,3 +9,5 @@ export const auth = betterAuth({
   emailAndPassword: { enabled: true },
   secret: env.BETTER_AUTH_SECRET,
 })
+
+export type Auth = typeof auth

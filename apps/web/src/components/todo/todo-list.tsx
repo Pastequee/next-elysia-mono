@@ -1,29 +1,12 @@
 'use client'
 
-import { Loader2 } from 'lucide-react'
-import { useGetTodosQuery } from '~/lib/hooks/todos'
+import { useSuspenseQuery } from '@tanstack/react-query'
+import { useTRPC } from '~/trpc/react'
 import { TodoItem } from './todo-item'
 
-interface TodoListProps {
-  hasSession?: boolean
-}
-
-export const TodoList = ({ hasSession }: TodoListProps) => {
-  const { data: todos = [], isLoading } = useGetTodosQuery({
-    enabled: hasSession,
-  })
-
-  if (isLoading) {
-    return (
-      <div className="mx-auto">
-        <Loader2 className="animate-spin" />
-      </div>
-    )
-  }
-
-  if (todos.length === 0) {
-    return
-  }
+export const TodoList = () => {
+  const trpc = useTRPC()
+  const { data: todos } = useSuspenseQuery(trpc.todo.all.queryOptions())
 
   return (
     <div className="flex flex-col gap-2">

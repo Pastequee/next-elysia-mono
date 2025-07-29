@@ -1,9 +1,23 @@
-import { Elysia } from 'elysia'
+import type { inferRouterInputs, inferRouterOutputs } from '@trpc/server'
 
-import { todosRouter } from './modules/todos'
+import type { AppRouter } from './root'
 
-export const app = new Elysia({ prefix: '/api' })
-  .use(todosRouter)
-  .get('/health', () => 'ok')
+/**
+ * Inference helpers for input types
+ * @example
+ * type TodoUpdateInput = RouterInputs['todo']['update']
+ *      ^? { id: string, content: string, status: 'pending' | 'completed' }
+ */
+type RouterInputs = inferRouterInputs<AppRouter>
 
-export type App = typeof app
+/**
+ * Inference helpers for output types
+ * @example
+ * type AllTodosOutput = RouterOutputs['todo']['all']
+ *      ^? Todo[]
+ */
+type RouterOutputs = inferRouterOutputs<AppRouter>
+
+export { type AppRouter, appRouter } from './root'
+export { createTRPCContext } from './trpc'
+export type { RouterInputs, RouterOutputs }

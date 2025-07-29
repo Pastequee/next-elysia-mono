@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 const geist = Geist({ subsets: ['latin'], variable: '--font-geist' })
 
 export const metadata: Metadata = {
-  description: 'Next.js + Elysia + BetterAuth',
-  title: 'Applicaction template for Next.js with Elysia backend and BetterAuth',
+  description: 'Next.js + tRPC + BetterAuth',
+  title: 'Applicaction template for Next.js with tRPC backend and BetterAuth',
 }
 
 export default function RootLayout({

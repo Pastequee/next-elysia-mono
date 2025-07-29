@@ -1,9 +1,8 @@
 'use client'
 
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useState } from 'react'
-
-import { useCreateTodoMutation } from '~/lib/hooks/todos'
-
+import { useTRPC } from '~/trpc/react'
 import { Button, Input, Loader } from '../ui'
 
 interface AddTodoFormProps {
@@ -12,8 +11,16 @@ interface AddTodoFormProps {
 
 export const AddTodoForm = ({ disabled = false }: AddTodoFormProps) => {
   const [newTodo, setNewTodo] = useState('')
-  const { isPending: isCreatingTodo, mutate: createTodoMutation } =
-    useCreateTodoMutation()
+
+  const trpc = useTRPC()
+  const queryClient = useQueryClient()
+  const { isPending: isCreatingTodo, mutate: createTodoMutation } = useMutation(
+    trpc.todo.create.mutationOptions({
+      onSuccess: () => {
+        queryClient.invalidateQueries({ queryKey: trpc.todo.all.queryKey() })
+      },
+    })
+  )
 
   const addTodo = () => {
     createTodoMutation(newTodo, {

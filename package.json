@@ -15,7 +15,7 @@
     "@biomejs/biome": "^2.1.2",
     "lefthook": "^1.12.2",
     "turbo": "^2.5.5",
-    "ultracite": "^5.0.47"
+    "ultracite": "^5.1.0"
   },
   "engines": {
     "node": ">=22"
@@ -28,9 +28,10 @@
       "tooling/*"
     ],
     "catalog": {
+      "zod": "^4.0.10",
       "typescript": "^5.8.3",
-      "zod": "^4.0.5",
       "drizzle-orm": "^0.44.3",
+      "@trpc/server": "^11.4.3",
       "@t3-oss/env-core": "^0.13.8"
     }
   }

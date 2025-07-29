@@ -1,28 +1,38 @@
 'use client'
 
+import type { RouterOutputs } from '@repo/api'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { Loader2, Pencil, Trash2 } from 'lucide-react'
 import { useRef, useState } from 'react'
-
-import {
-  type Todo,
-  useDeleteTodoMutation,
-  useUpdateTodoMutation,
-} from '~/lib/hooks/todos'
-
+import { useTRPC } from '~/trpc/react'
 import { Button, Checkbox, Label } from '../ui'
 
 interface TodoItemProps {
-  todo: Todo
+  todo: RouterOutputs['todo']['all'][number]
 }
 
 export const TodoItem = ({ todo }: TodoItemProps) => {
   const [isEditing, setIsEditing] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
 
-  const { isPending: isDeletingTodo, mutate: deleteTodoMutation } =
-    useDeleteTodoMutation()
-  const { isPending: isUpdatingTodo, mutate: updateTodoMutation } =
-    useUpdateTodoMutation()
+  const trpc = useTRPC()
+  const queryClient = useQueryClient()
+
+  const { isPending: isDeletingTodo, mutate: deleteTodoMutation } = useMutation(
+    trpc.todo.delete.mutationOptions({
+      onSuccess: () => {
+        queryClient.invalidateQueries({ queryKey: trpc.todo.all.queryKey() })
+      },
+    })
+  )
+
+  const { isPending: isUpdatingTodo, mutate: updateTodoMutation } = useMutation(
+    trpc.todo.update.mutationOptions({
+      onSuccess: () => {
+        queryClient.invalidateQueries({ queryKey: trpc.todo.all.queryKey() })
+      },
+    })
+  )
 
   const updateTodoStatus = (id: string, status: 'completed' | 'pending') => {
     updateTodoMutation({ id, status })

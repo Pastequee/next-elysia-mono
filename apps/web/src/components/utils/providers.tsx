@@ -1,15 +1,12 @@
-'use client'
-
 import { Toaster } from '~/components/ui'
 import { ThemeProvider } from '~/components/utils/theme-provider'
-
-import { ApiClientProvider } from './api-client-provider'
+import { TRPCReactProvider } from '~/trpc/react'
 
 export const Providers = ({ children }: { children: React.ReactNode }) => {
   return (
-    <ApiClientProvider>
-      <ThemeProvider>{children}</ThemeProvider>
+    <ThemeProvider>
+      <TRPCReactProvider>{children}</TRPCReactProvider>
       <Toaster richColors />
-    </ApiClientProvider>
+    </ThemeProvider>
   )
 }

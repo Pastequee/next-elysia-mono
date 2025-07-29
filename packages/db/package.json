@@ -16,6 +16,7 @@
     "dev": "tsc --watch",
     "push": "bun dotenv drizzle-kit push",
     "studio": "bun dotenv drizzle-kit studio",
+    "typecheck": "tsc --noEmit",
     "dotenv": "dotenv -e ../../.env --"
   },
   "dependencies": {

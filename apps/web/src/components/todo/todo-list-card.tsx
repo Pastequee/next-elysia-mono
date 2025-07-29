@@ -1,12 +1,16 @@
 import { LoggedIn, LoggedOut } from '~/components/auth'
 import { Card, CardContent, Separator } from '~/components/ui'
 import { getSession } from '~/lib/actions/get-session'
-
+import { HydrateClient, prefetch, trpc } from '~/trpc/server'
 import { AddTodoForm } from './add-todo-form'
 import { TodoList } from './todo-list'
 
 export const TodoListCard = async () => {
   const session = await getSession()
+
+  if (session) {
+    prefetch(trpc.todo.all.queryOptions())
+  }
 
   return (
     <Card className="mx-auto w-[90vw] max-w-md">
@@ -19,7 +23,9 @@ export const TodoListCard = async () => {
         <AddTodoForm disabled={!session} />
         <LoggedIn>
           <Separator className="last:hidden" />
-          <TodoList />
+          <HydrateClient>
+            <TodoList />
+          </HydrateClient>
         </LoggedIn>
       </CardContent>
     </Card>
